@@ -9,7 +9,7 @@
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-
+--boom
 use master;
 go
 create database MonsterDB;
