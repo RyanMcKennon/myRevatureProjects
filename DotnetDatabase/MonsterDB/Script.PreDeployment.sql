@@ -9,16 +9,28 @@
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
---boom
 use master;
 go
+
+if(db_id(N'MonsterDB') is not null)
+begin
+	drop database MonsterDB;
+end;
+
 create database MonsterDB;
 go
---if(DB_ID(N'MonsterDB') is null)
---begin
---	create database MonsterDB;
---end;
 
+use MonsterDB;
+go
+
+if(SCHEMA_ID(N'Monster') is not null)
+begin
+	drop schema Monster;
+end
+go
+
+--create schema Monster;
+--go
 --use master;
 --go
 
