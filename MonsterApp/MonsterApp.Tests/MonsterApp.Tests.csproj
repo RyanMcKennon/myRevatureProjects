@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="AdoDataInsertTest.cs" />
     <Compile Include="AdoDataTests.cs" />
+    <Compile Include="AdoUpdateTest.cs" />
     <Compile Include="factAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
