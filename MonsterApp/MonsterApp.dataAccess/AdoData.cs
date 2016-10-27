@@ -41,7 +41,7 @@ namespace MonsterApp.dataAccess
                 }
                 return genders;
             }
-            catch(Exception)
+            catch(Exception ex)
             {
                 return null;
             }
@@ -55,7 +55,26 @@ namespace MonsterApp.dataAccess
         /// <returns></returns>
         public List<MonsterType> GetMonsterTypes()
         {
-            return new List<MonsterType>();
+            try
+            {
+                var ds = GetDataDisconnected("select * from Monster.MonsterType;");
+                var monsterTypes = new List<MonsterType>();
+
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    monsterTypes.Add(new MonsterType()
+                    {
+                        MonsterTypeID = int.Parse(row[0].ToString()),
+                        Name = row[1].ToString(),
+                        Active = bool.Parse(row[2].ToString())
+                    });
+                }
+                return monsterTypes;
+            }
+            catch(Exception)
+            {
+                return null;
+            }
         }
 
 
@@ -65,7 +84,26 @@ namespace MonsterApp.dataAccess
         /// <returns></returns>
         public List<Title> GetTitles()
         {
-            return new List<Title>();
+            try
+            {
+                var ds = GetDataDisconnected("select * from Monster.Title;");
+                var monsterTitles = new List<Title>();
+
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    monsterTitles.Add(new Title()
+                    {
+                        TitleID = int.Parse(row[0].ToString()),
+                        Name = row[1].ToString(),
+                        Active = bool.Parse(row[2].ToString())
+                    });
+                }
+                return monsterTitles;
+            }
+            catch(Exception)
+            {
+                return null;
+            }
         }
 
         #endregion
@@ -81,7 +119,7 @@ namespace MonsterApp.dataAccess
             SqlCommand cmd;
 
             //using statement to keep resource leaks from happening
-            using (var connection = new SqlConnection())
+            using (var connection = new SqlConnection(connectionString))
             {
                 cmd = new SqlCommand(query, connection);
                 da = new SqlDataAdapter(cmd);
