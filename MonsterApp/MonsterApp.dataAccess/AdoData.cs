@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MonsterApp.dataAccess
 {
-    public class AdoData
+    public partial class AdoData
     {
         // creating a field to store the connection string
         private string connectionString = ConfigurationManager.ConnectionStrings["MonsterDB"].ConnectionString;
@@ -41,7 +41,7 @@ namespace MonsterApp.dataAccess
                 }
                 return genders;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return null;
             }

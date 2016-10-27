@@ -8,36 +8,65 @@ using Xunit;
 
 namespace MonsterApp.Tests
 {
-    public class AdoDataTests
+    public partial class AdoDataTests
     {
         [Fact]
         public void Test_GetGenders()
         {
 
             AdoData data = new AdoData();
-            var expected = 3;
-
             var actual = data.GetGender();
 
-            Assert.Equal(expected, actual.Count);
+            Assert.NotNull(actual);
         }
 
         [Fact]
         public void Test_GetMonsterType()
         {
             AdoData data = new AdoData();
-            var expected = 3;
             var actual = data.GetMonsterTypes();
 
-            Assert.Equal(expected, actual.Count);
+            Assert.NotNull(actual);
         }
 
         [Fact]
         public void Test_GetTitle()
         {
             AdoData data = new AdoData();
-            var expected = 3;
             var actual = data.GetTitles();
+
+            Assert.NotNull(actual);
+        }
+
+
+        [Fact]
+        public void NegativeTest_GetTitle()
+        {
+            AdoData data = new AdoData();
+            var expected = 0;
+            var actual = data.GetTitles();
+
+            Assert.Equal(expected, actual.Count);
+        }
+
+        [Fact]
+        public void NegativeTest_GetMonsterType()
+        {
+            AdoData data = new AdoData();
+            var expected = 1;
+            var actual = data.GetMonsterTypes();
+
+            Assert.Equal(expected, actual.Count);
+        }
+
+        [Fact]
+        public void NegativeTest_GetGenders()
+        {
+
+            AdoData data = new AdoData();
+            var expected = 2;
+
+            var actual = data.GetGender();
 
             Assert.Equal(expected, actual.Count);
         }
