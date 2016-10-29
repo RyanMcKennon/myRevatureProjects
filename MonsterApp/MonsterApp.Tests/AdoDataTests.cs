@@ -1,4 +1,5 @@
 ﻿using MonsterApp.dataAccess;
+using MonsterApp.dataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,37 +39,15 @@ namespace MonsterApp.Tests
             Assert.NotNull(actual);
         }
 
-
         [Fact]
-        public void NegativeTest_GetTitle()
+        public void Test_GetRecentGender()
         {
             AdoData data = new AdoData();
-            var expected = 0;
-            var actual = data.GetTitles();
+            var expected = 21;
+            var actual = data.GetRecentGender();
 
-            Assert.Equal(expected, actual.Count);
+            Assert.Equal(expected, actual);
         }
-
-        [Fact]
-        public void NegativeTest_GetMonsterType()
-        {
-            AdoData data = new AdoData();
-            var expected = 1;
-            var actual = data.GetMonsterTypes();
-
-            Assert.Equal(expected, actual.Count);
-        }
-
-        [Fact]
-        public void NegativeTest_GetGenders()
-        {
-
-            AdoData data = new AdoData();
-            var expected = 2;
-
-            var actual = data.GetGender();
-
-            Assert.Equal(expected, actual.Count);
-        }
+        
     }
 }

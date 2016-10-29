@@ -1,4 +1,4 @@
-﻿using MonsterApp.dataAccess.Models;
+﻿using Model = MonsterApp.dataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,12 +11,7 @@ namespace MonsterApp.dataAccess
     public partial class AdoData
     {
         #region insert
-        /// <summary>
-        /// Inserting a gender type into the database
-        /// </summary>
-        /// <param name="gender"></param>
-        /// <returns></returns>
-        public bool InsertGender(Gender gender)
+        public bool InsertGender(Model.Gender gender)
         {
             var n = new SqlParameter("name", gender.Name);
             var query = "insert into Monster.Gender(GenderName, Active) values (@name,1)";
@@ -35,6 +30,19 @@ namespace MonsterApp.dataAccess
                 result = cmd.ExecuteNonQuery();
             }
             return result;
+        }
+
+        public bool InsertMonster(Model.Monster monster)
+        {
+            var n0 = new SqlParameter("GenderID", monster.GenderID);
+            var n1 = new SqlParameter("TitleID", monster.TitleID);
+            var n2 = new SqlParameter("TypeID", monster.TypeID);
+            var n3 = new SqlParameter("Name", monster.Name);
+            var n4 = new SqlParameter("PicturePath", monster.PicturePath);
+            var n5 = new SqlParameter("Active", monster.Active);
+            var query = "insert into Monster.Monster(GenderID,TitleID,TypeID,Name,PicturePath,Active) values (@GenderID,@TitleID,@TypeID,@Name,@PicturePath,@Active)";
+
+            return InsertData(query, n0, n1, n2, n3, n4, n5) == 1;
         }
         #endregion
 

@@ -1,4 +1,4 @@
-﻿using MonsterApp.dataAccess.Models;
+﻿using Model = MonsterApp.dataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,16 +22,16 @@ namespace MonsterApp.dataAccess
         /// </summary>
         /// <returns></returns>
         //disconnected architecture
-        public List<Gender> GetGender()
+        public List<Model.Gender> GetGender()
         {
             try
             {
                 var ds = GetDataDisconnected("select * from Monster.Gender;");
-                var genders = new List<Gender>();
+                var genders = new List<Model.Gender>();
 
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    genders.Add(new Gender()
+                    genders.Add(new Model.Gender()
                     {
                         // in terms of database its better to cast to a string and then parse to convert
                         GenderID = int.Parse(row[0].ToString()),
@@ -53,16 +53,16 @@ namespace MonsterApp.dataAccess
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<MonsterType> GetMonsterTypes()
+        public List<Model.MonsterType> GetMonsterTypes()
         {
             try
             {
                 var ds = GetDataDisconnected("select * from Monster.MonsterType;");
-                var monsterTypes = new List<MonsterType>();
+                var monsterTypes = new List<Model.MonsterType>();
 
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    monsterTypes.Add(new MonsterType()
+                    monsterTypes.Add(new Model.MonsterType()
                     {
                         MonsterTypeID = int.Parse(row[0].ToString()),
                         Name = row[1].ToString(),
@@ -82,16 +82,16 @@ namespace MonsterApp.dataAccess
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Title> GetTitles()
+        public List<Model.Title> GetTitles()
         {
             try
             {
                 var ds = GetDataDisconnected("select * from Monster.Title;");
-                var monsterTitles = new List<Title>();
+                var monsterTitles = new List<Model.Title>();
 
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    monsterTitles.Add(new Title()
+                    monsterTitles.Add(new Model.Title()
                     {
                         TitleID = int.Parse(row[0].ToString()),
                         Name = row[1].ToString(),
@@ -132,6 +132,23 @@ namespace MonsterApp.dataAccess
 
         }
 
+        public int GetRecentGender()
+        {
+            try
+            {
+                var ds = GetDataDisconnected("select top(1) * from Monster.Gender as mg order by mg.GenderId desc;");
+                Model.Gender genders = new Model.Gender();
+                genders.GenderID = int.Parse(ds.Tables[0].Rows[0][0].ToString());
+                genders.Name = ds.Tables[0].Rows[0][1].ToString();
+                genders.Active = bool.Parse(ds.Tables[0].Rows[0][2].ToString());
+                int result = genders.GenderID;
+                return result;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
 
+        }
     }
 }

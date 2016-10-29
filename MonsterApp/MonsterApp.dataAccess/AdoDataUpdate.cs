@@ -1,4 +1,4 @@
-﻿using MonsterApp.dataAccess.Models;
+﻿using Model = MonsterApp.dataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,7 +10,7 @@ namespace MonsterApp.dataAccess
 {
     public partial class AdoData
     {
-        public bool UpdateGender(Gender gender)
+        public bool UpdateGender(Model.Gender gender)
         {
 
             var query = "update Monster.Gender set Name = @name, Active = @active where GenderID = @id";
