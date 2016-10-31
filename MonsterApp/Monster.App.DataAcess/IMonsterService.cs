@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Monster.App.DataAcess.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,8 +14,14 @@ namespace Monster.App.DataAcess
     [ServiceContract]
     public interface IMonsterService
     {
-        [OperationContract]
-        string DoWork();
+        [OperationContract()]
+        List<GenderDAO> GetGender();
+
+        [OperationContract()]
+        List<MonsterTypeDAO> GetMonsterTypes();
+
+        [OperationContract()]
+        List<TitleDAO> GetTitles();
 
     }
 }
