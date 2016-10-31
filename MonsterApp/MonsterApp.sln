@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonsterApp.dataAccess", "Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonsterApp.Tests", "MonsterApp.Tests\MonsterApp.Tests.csproj", "{049021D5-9DC8-44A9-87DC-F51A973CA70D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monster.App.DataClient", "Monster.App.DataAcess\Monster.App.DataClient.csproj", "{005F6117-71B3-44CD-A7BE-E2A60AA5310D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{049021D5-9DC8-44A9-87DC-F51A973CA70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{049021D5-9DC8-44A9-87DC-F51A973CA70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{049021D5-9DC8-44A9-87DC-F51A973CA70D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{005F6117-71B3-44CD-A7BE-E2A60AA5310D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{005F6117-71B3-44CD-A7BE-E2A60AA5310D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{005F6117-71B3-44CD-A7BE-E2A60AA5310D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{005F6117-71B3-44CD-A7BE-E2A60AA5310D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
